@@ -1,3 +1,5 @@
-function LoadeMoreBtn() {}
+function LoadMoreBtn({ handleLoadMore }) {
+  return <button onClick={handleLoadMore}>Load more</button>;
+}
 
-export default LoadeMoreBtn;
+export default LoadMoreBtn;
