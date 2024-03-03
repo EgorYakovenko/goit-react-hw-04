@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-const KEY = 'nfETKchrhu0QZJvrk5wEPWVq-5iCKjXTqUbWwdRMBwo';
+// const KEY = 'nfETKchrhu0QZJvrk5wEPWVq-5iCKjXTqUbWwdRMBwo';
 
 async function fetchImage(searchQuery, page = 1) {
   const response = await axios.get('https://api.unsplash.com/search/photos', {
     params: {
-      // client_id: KEY,
       query: searchQuery,
       per_page: 5,
       page,

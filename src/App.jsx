@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-
+import Modal from 'react-modal';
+// import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import SearchBar from './components/SearchBar/SearchBar';
 import ImageGallery from './components/ImageGallery/ImageGallery';
@@ -15,6 +16,9 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
   // console.log(articles);
 
   useEffect(() => {
@@ -26,7 +30,7 @@ function App() {
         setIsLoading(true);
         setError(false);
         const data = await fetchImage(searchQuery, page);
-        console.log(data);
+        // console.log(data);
         setArticles(prevArticles => {
           return [...prevArticles, ...data];
         });
@@ -47,9 +51,24 @@ function App() {
   };
 
   const handleLoadMore = () => {
-    setPage(prevPage => prevPage + 1);
-    // setPage(page + 1);
+    setPage(page + 1);
   };
+
+  //====================================================
+  // function openModal() {
+  //   setIsOpen(true);
+  // }
+
+  // function afterOpenModal() {
+  //   // references are now sync'd and can be accessed.
+  //   subtitle.style.color = '#f00';
+  // }
+
+  // function closeModal() {
+  //   setIsOpen(false);
+  // }
+
+  //====================================================
 
   return (
     <>
@@ -62,7 +81,9 @@ function App() {
 
         {articles.length > 0 && <ImageGallery items={articles} />}
 
-        {articles.length > 0 && <LoadMoreBtn moreBtn={handleLoadMore} />}
+        {articles.length > 0 && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
+
+        <ImageModal />
       </div>
     </>
   );

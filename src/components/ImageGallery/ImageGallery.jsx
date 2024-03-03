@@ -12,3 +12,5 @@ function ImageGallery({ items }) {
 }
 
 export default ImageGallery;
+
+// onClick={() => onImageClick(image)}
