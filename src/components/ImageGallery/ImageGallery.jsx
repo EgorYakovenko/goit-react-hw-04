@@ -3,14 +3,13 @@ import css from './ImageGallery.module.css';
 
 function ImageGallery({ items, onImageClick }) {
   return (
-    <ul className={css.imageGallery}>
-      <li className={css.imageGalleryItem}>
+    <ul className={css.gallary}>
+      <li>
         {items.map(item => (
           <div key={item.id}>
             <ImageCard items={item} onClick={() => onImageClick(item)} />
           </div>
         ))}
-        {/* <ImageCard items={items} /> */}
       </li>
     </ul>
   );

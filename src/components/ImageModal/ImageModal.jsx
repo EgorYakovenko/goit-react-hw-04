@@ -17,7 +17,7 @@ function ImageModal({ isOpen, image, onClose }) {
       isOpen={isOpen}
       onRequestClose={onClose}
       contentLabel="Image Modal"
-      style={customStyles}
+      // style={customStyles}
       className={css.overlay}
       overlayClassName="overlay"
       //   className="modal"
