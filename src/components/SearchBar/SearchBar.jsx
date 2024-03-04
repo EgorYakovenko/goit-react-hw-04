@@ -1,8 +1,9 @@
 import { Field, Form, Formik } from 'formik';
+import css from './SearchBar.module.css';
 
 function SearchBar({ onSearch }) {
   return (
-    <header>
+    <header className={css.headeContainer}>
       <Formik
         initialValues={{ query: '' }}
         onSubmit={(values, actions) => {
@@ -11,15 +12,18 @@ function SearchBar({ onSearch }) {
           actions.resetForm();
         }}
       >
-        <Form>
+        <Form className={css.searchForm}>
           <Field
+            className={css.searchInput}
             name="query"
             type="text"
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
           />
-          <button type="submit">Search</button>
+          <button className={css.searchButton} type="submit">
+            Search
+          </button>
         </Form>
       </Formik>
     </header>

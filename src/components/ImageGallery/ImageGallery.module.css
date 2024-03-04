@@ -1,0 +1,32 @@
+.imageGallery {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 0;
+}
+
+.imageGalleryItem {
+  flex: 0 0 calc(20% - 16px); /* Используем calc для вычисления ширины элемента с отступом в 16px */
+  box-sizing: border-box;
+}
+
+.imageWrapper {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 100%;
+  background-color: #fff; /* Фон для четных элементов */
+}
+
+.imageGalleryItem:nth-child(even) .imageWrapper {
+  background-color: #f0f0f0; /* Фон для нечетных элементов */
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  display: block;
+  object-fit: cover;
+}

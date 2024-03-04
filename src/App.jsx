@@ -1,6 +1,9 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-// import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import SearchBar from './components/SearchBar/SearchBar';
 import ImageGallery from './components/ImageGallery/ImageGallery';
@@ -10,6 +13,8 @@ import ImageModal from './components/ImageModal/ImageModal';
 import ImageCard from './components/ImageCard/ImageCard';
 import fetchImage from './components/api.js';
 
+Modal.setAppElement('#root');
+
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
@@ -17,9 +22,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  // console.log(articles);
+  const [modalIsOpen, setModalIsOpen] = React.useState(false);
+  // const [selectedImage, setSelectedImage] = useState(null);
+  // console.log(selectedImage);
 
   useEffect(() => {
     if (searchQuery === '') {
@@ -55,18 +61,15 @@ function App() {
   };
 
   //====================================================
-  // function openModal() {
-  //   setIsOpen(true);
-  // }
 
-  // function afterOpenModal() {
-  //   // references are now sync'd and can be accessed.
-  //   subtitle.style.color = '#f00';
-  // }
+  const openModal = image => {
+    setSelectedImage(image);
+    setModalIsOpen(true);
+  };
 
-  // function closeModal() {
-  //   setIsOpen(false);
-  // }
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
 
   //====================================================
 
@@ -79,11 +82,19 @@ function App() {
 
         {error && <ErrorMessage />}
 
-        {articles.length > 0 && <ImageGallery items={articles} />}
+        {articles.length > 0 && (
+          <ImageGallery items={articles} onImageClick={openModal} />
+        )}
 
         {articles.length > 0 && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
 
-        <ImageModal />
+        {selectedImage && (
+          <ImageModal
+            isOpen={modalIsOpen}
+            image={selectedImage}
+            onClose={closeModal}
+          />
+        )}
       </div>
     </>
   );
