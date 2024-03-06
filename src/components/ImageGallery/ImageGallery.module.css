@@ -11,6 +11,11 @@
   border: 5px solid #ffffff;
   background: #ffffff;
   outline: 1px solid #cccccc;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gallary img:hover {
+  opacity: 0.8;
 }
 
 .gallary li {

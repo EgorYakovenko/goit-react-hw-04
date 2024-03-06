@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-// const KEY = 'nfETKchrhu0QZJvrk5wEPWVq-5iCKjXTqUbWwdRMBwo';
-
 async function fetchImage(searchQuery, page = 1) {
   const response = await axios.get('https://api.unsplash.com/search/photos', {
     params: {
@@ -14,7 +12,7 @@ async function fetchImage(searchQuery, page = 1) {
       'Accept-Version': 'v1',
     },
   });
-  console.log(response);
+
   return response.data.results;
 }
 

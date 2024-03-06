@@ -1,8 +1,7 @@
+import React from 'react';
+
 import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
-
-import React from 'react';
-import ReactDOM from 'react-dom';
 
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import SearchBar from './components/SearchBar/SearchBar';
@@ -10,7 +9,6 @@ import ImageGallery from './components/ImageGallery/ImageGallery';
 import Loader from './components/Loader/Loader';
 import ErrorMessage from './components/ErrorMessage/ErrorMessage';
 import ImageModal from './components/ImageModal/ImageModal';
-import ImageCard from './components/ImageCard/ImageCard';
 import fetchImage from './components/api.js';
 
 Modal.setAppElement('#root');
@@ -24,8 +22,6 @@ function App() {
 
   const [selectedImage, setSelectedImage] = useState(null);
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
-  // const [selectedImage, setSelectedImage] = useState(null);
-  // console.log(selectedImage);
 
   useEffect(() => {
     if (searchQuery === '') {
@@ -36,12 +32,11 @@ function App() {
         setIsLoading(true);
         setError(false);
         const data = await fetchImage(searchQuery, page);
-        // console.log(data);
+
         setArticles(prevArticles => {
           return [...prevArticles, ...data];
         });
       } catch (error) {
-        // console.log(error);
         setError(true);
       } finally {
         setIsLoading(false);
@@ -60,8 +55,6 @@ function App() {
     setPage(page + 1);
   };
 
-  //====================================================
-
   const openModal = image => {
     setSelectedImage(image);
     setModalIsOpen(true);
@@ -70,8 +63,6 @@ function App() {
   const closeModal = () => {
     setModalIsOpen(false);
   };
-
-  //====================================================
 
   return (
     <>
@@ -101,12 +92,3 @@ function App() {
 }
 
 export default App;
-
-//  useEffect(() => {
-//    async function fetchImage() {
-//      const data = await fetchImage(setImages);
-//      setImages(data);
-//    }
-
-//    fetchImage();
-//  }, []);

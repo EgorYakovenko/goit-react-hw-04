@@ -1,18 +1,15 @@
-/* Стили для контейнера заголовка */
 .headeContainer {
   background-color: #f0f0f0;
   padding: 20px;
   text-align: center;
 }
 
-/* Стили для формы поиска */
 .searchForm {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Стили для поля ввода в форме поиска */
 .searchInput {
   padding: 8px;
   font-size: 16px;
@@ -22,7 +19,6 @@
   width: 200px;
 }
 
-/* Стили для кнопки в форме поиска */
 .searchButton {
   padding: 10px;
   font-size: 16px;
@@ -31,4 +27,8 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.searchButton:hover {
+  background-color: #0056b3;
 }

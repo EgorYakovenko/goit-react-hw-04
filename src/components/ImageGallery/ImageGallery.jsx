@@ -14,14 +14,3 @@ function ImageGallery({ items, onImageClick }) {
 }
 
 export default ImageGallery;
-
-// className={css.list}
-//   return (
-//     <ul>
-//       {/* Набір елементів списку із зображеннями */}
-//       <li>
-//         <ImageCard items={items} />
-//       </li>
-//     </ul>
-//   );
-// }
